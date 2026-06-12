@@ -1,0 +1,6 @@
+{
+  "name": "Tabela Dinâmica da Copa do Mundo 2026",
+  "description": "Tabela dinâmica e simulador completo da Copa do Mundo FIFA 2026 com chaveamento e estatísticas detalhadas de confrontos diretos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
