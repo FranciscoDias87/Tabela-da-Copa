@@ -530,7 +530,7 @@ export default function App() {
       {/* Rádio Meio Norte FM Theme Banner Header */}
       <div className="bg-gradient-to-r from-teal-700 via-emerald-800 to-indigo-950 py-3 text-center text-xs font-semibold text-white border-b border-emerald-900/30 flex flex-wrap gap-2 items-center justify-center px-4" id="station-badge">
         <span className="bg-yellow-500 text-slate-950 font-black px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">Edição Especial</span>
-        <span>Rádio Meio-Norte 99.9 FM • Tabela da Rádio Meio Norte na Copa do Mundo 2026</span>
+        <span>Rádio Meio-Norte 89.1 FM • Tabela da Rádio Meio Norte na Copa do Mundo 2026</span>
       </div>
 
       {/* Main Brand header */}
