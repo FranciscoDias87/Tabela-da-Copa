@@ -65,12 +65,15 @@ export function computeGroupStandings(groupLetter: string, matches: Match[]): Te
     }
   });
 
+  // Update goalDifference for each team
+  Object.values(statsMap).forEach((team) => {
+    team.goalDifference = team.goalsFor - team.goalsAgainst;
+  });
+
   // Math-sort
   return Object.values(statsMap).sort((a, b) => {
     if (b.points !== a.points) return b.points - a.points;
-    const diffA = a.goalsFor - a.goalsAgainst;
-    const diffB = b.goalsFor - b.goalsAgainst;
-    if (diffB !== diffA) return diffB - diffA;
+    if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
     if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
     return b.stars - a.stars; // Tie-breaker by rating
   });
@@ -123,12 +126,22 @@ export function matchThirdPlacesToKnockoutSlots(
   const assignment: Record<number, string> = {};
   const usedTeams = new Set<string>();
 
+  const hasGroupD = qualifiedThirds.some((t) => t.group === 'D');
+  const hasGroupF = qualifiedThirds.some((t) => t.group === 'F');
+
   function backtrack(slotIndex: number): boolean {
     if (slotIndex === slots.length) return true;
     const slot = slots[slotIndex];
     for (const teamStats of qualifiedThirds) {
       const code = teamStats.code;
       if (!usedTeams.has(code) && slot.eligible.includes(teamStats.group)) {
+        // FIFA Official Rule pairing priority: when both Group D and F are qualified,
+        // Match 74 (1E - Germany) plays 3D (Paraguay) and Match 77 (1I - France) plays 3F (Sweden).
+        if (hasGroupD && hasGroupF) {
+          if (slot.id === 74 && teamStats.group === 'F') continue;
+          if (slot.id === 77 && teamStats.group === 'D') continue;
+        }
+
         usedTeams.add(code);
         assignment[slot.id] = code;
         if (backtrack(slotIndex + 1)) return true;
