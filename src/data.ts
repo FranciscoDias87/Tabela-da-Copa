@@ -1350,7 +1350,7 @@ export const KNOCKOUT_METADATA_TEMPLATES = [
   { id: 102, roundKey: 'SF', date: '15/07/2026', time: '16:00', location: 'Atlanta, EUA', homeLabel: 'Vencedor Jogo 99', awayLabel: 'Vencedor Jogo 100' },
 
   // ==================== THIRD PLACE ====================
-  { id: 103, roundKey: 'TP', date: '18/06/2026', time: '18:00', location: 'Miami, EUA', homeLabel: 'Perdedor Jogo 101', awayLabel: 'Perdedor Jogo 102' },
+  { id: 103, roundKey: 'TP', date: '18/07/2026', time: '18:00', location: 'Miami, EUA', homeLabel: 'Perdedor Jogo 101', awayLabel: 'Perdedor Jogo 102' },
 
   // ==================== FINAL ====================
   { id: 104, roundKey: 'F', date: '19/07/2026', time: '16:00', location: 'Nova York/Nova Jersey, EUA', homeLabel: 'Vencedor Jogo 101', awayLabel: 'Vencedor Jogo 102' }

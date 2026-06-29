@@ -128,6 +128,8 @@ export function matchThirdPlacesToKnockoutSlots(
 
   const hasGroupD = qualifiedThirds.some((t) => t.group === 'D');
   const hasGroupF = qualifiedThirds.some((t) => t.group === 'F');
+  const hasGroupI = qualifiedThirds.some((t) => t.group === 'I');
+  const hasGroupJ = qualifiedThirds.some((t) => t.group === 'J');
 
   function backtrack(slotIndex: number): boolean {
     if (slotIndex === slots.length) return true;
@@ -140,6 +142,13 @@ export function matchThirdPlacesToKnockoutSlots(
         if (hasGroupD && hasGroupF) {
           if (slot.id === 74 && teamStats.group === 'F') continue;
           if (slot.id === 77 && teamStats.group === 'D') continue;
+        }
+
+        // FIFA Official Rule pairing priority: when both Group I and J are qualified,
+        // Match 82 (1G - Belgium) plays 3I (Senegal) and Match 85 (1B - Switzerland) plays 3J (Algeria).
+        if (hasGroupI && hasGroupJ) {
+          if (slot.id === 82 && teamStats.group === 'J') continue;
+          if (slot.id === 85 && teamStats.group === 'I') continue;
         }
 
         usedTeams.add(code);
